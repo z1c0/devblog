@@ -1,0 +1,20 @@
+@model Post
+
+<article class="blogpost">
+
+<header class="text-center">
+  <h1>@Model.Title</h1>
+  <span class="published-date">@Model.PublishDateString</span>
+  <div class="tags">
+    @foreach (var t in Model.Tags)
+    {
+      <a asp-route-controller="tags" asp-route-action="@t">@t</a>
+    }
+  </div>
+</header>
+
+<main>
+  @Html.Raw(@Model.Content)
+</main>
+
+</article>

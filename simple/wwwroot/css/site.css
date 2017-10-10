@@ -1,0 +1,24 @@
+﻿.blogpost .published-date {
+  display: block;
+  text-align: center;
+  font-style: italic;
+  margin-bottom: 1.0em;
+}
+.blogpost .tags {
+  text-align: center;
+}
+.blogpost .tags .fa-tags {
+  margin-right: 0.5em;
+}
+.blogpost .tags a {
+  color: white;
+  border-radius: 2px;
+  padding: 3px 10px;
+  margin-bottom: 2px;
+  display: inline-block;
+  background: #AAAAAA;
+}
+.blogpost .tags a:hover {
+  color: white;
+  opacity: 0.5;
+}

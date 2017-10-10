@@ -1,0 +1,25 @@
+﻿@model devblog.Models.PostsPage
+
+<div class="repo-list">
+  <h2>Blog Posts</h2>
+  <ul>
+  @foreach (var p in @Model.Posts)
+  {
+    <li>
+      <a asp-route-action="@p.Slug">@p.Title</a>
+      <span class="text-muted">@p.PublishDateString</span>
+    </li>
+  }
+  </ul>
+
+  <nav class="pager">
+    @if (Model.Previous.HasValue)
+    {
+      <a asp-route-id="@Model.Previous.Value" class="btn btn-primary" role="button">&larr; newer</a>
+    }
+    @if (Model.Next.HasValue)
+    {
+      <a asp-route-id="@Model.Next.Value" class="btn btn-primary" role="button">older &rarr;</a>
+    }
+  </nav>
+</div>
