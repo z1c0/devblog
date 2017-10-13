@@ -29,6 +29,20 @@ namespace devblog.Controllers
       return View("Index", posts);
     }
 
+    [Route("blog/rss")]
+    public IActionResult Rss()
+    {
+      var rss = _postsRepository.CreateRssFeed();
+      return Content(rss, "text/xml; charset=utf-8");
+    }
+
+    [Route("blog/json")]
+    public JsonResult Json()
+    {
+      var data = _postsRepository.Posts.Take(10);
+      return Json(data);
+    }     
+
     public IActionResult Index(int id)
     {
       return View(_postsRepository.GetPage(id));

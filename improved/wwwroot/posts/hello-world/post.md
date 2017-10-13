@@ -7,4 +7,20 @@ image: hello.png
 
 # Hello World!
 
+```csharp
+using System;
+namespace HelloWorld
+{
+  class Hello 
+  {
+    static void Main() 
+    {
+      Console.WriteLine("Hello World!");
+    }
+  }
+}
+```
+
+Dies ist der erste Blog Post.
+
 ![hello.png](hello.png)

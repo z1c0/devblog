@@ -1,8 +1,32 @@
 @model Post
 
+@section meta
+{
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="@Model.Title" />
+  <meta name="twitter:url" content="@Model.Url" />
+  <meta name="twitter:description" content="@Model.Description" />
+  <meta name="twitter:image" content="@Model.FeaturedImage" />
+  <meta name="twitter:creator" content="@Config.TwitterName" />
+  <meta name="twitter:site" content="@Config.TwitterName" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="@Model.Title" />
+  <meta property="og:description" content="@Model.Description" />
+  <meta property="og:url" content="@Model.Url" />
+  <meta property="og:image" content="@Model.FeaturedImage" />
+}
+
 <article class="blogpost">
 
 <header class="text-center">
+  <ul class="sharing">
+    <li><a href="@Sharing.GetUrl(For.Twitter, Model)" target="_blank"><i class="fa fa-twitter fa-inverse"></i></a></li>
+    <li><a href="@Sharing.GetUrl(For.Facebook, Model)"target="_blank"><i class="fa fa-facebook fa-inverse"></i></a></li>
+    <li><a href="@Sharing.GetUrl(For.LinkedIn, Model)" target="_blank"><i class="fa fa-linkedin fa-inverse"></i></a></li>
+    <li><a href="@Sharing.GetUrl(For.Email, Model)" target="_blank"><i class="fa fa-envelope-o fa-inverse"></i></a></li>
+  </ul>
+  
   <h1>@Model.Title</h1>
   <span class="published-date">@Model.PublishDateString</span>
   <div class="tags">
@@ -18,3 +42,21 @@
 </main>
 
 </article>
+
+<div id="disqus_thread"></div>
+
+@section scripts
+{
+  <script>
+    var disqus_config = function () {
+      this.page.url = 'http://localhost/@Model.Url';
+      this.page.identifier = '@Model.Slug';
+    };
+    (function() {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://sampledevblog.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+}
