@@ -89,6 +89,34 @@ namespace devblog.Services
       return sw.ToString();
     }
 
+    internal PostsPage Find(string query)
+    {
+      var result = new List<Post>();
+      if (!string.IsNullOrEmpty(query))
+      {
+        var tokens = query.Split(' ');
+        foreach (var p in _posts)
+        {
+          foreach (var t in tokens)
+          {
+            if (p.Title.IndexOf(t, StringComparison.InvariantCultureIgnoreCase) >= 0 || p.Tags.Contains(t, StringComparer.InvariantCultureIgnoreCase))
+            {
+              result.Add(p);
+            }
+          }
+          if (result.Count > 10)
+          {
+            break;
+          }
+        }
+      }
+      return new PostsPage
+      {
+        Posts = result,
+        Description = $"Search result for '{query}'"
+      };
+    }
+
     internal PostsPage FindByTag(string tag, int page)
     {
       var posts = _posts.Where(p => p.Tags.Contains(tag, StringComparer.CurrentCultureIgnoreCase));

@@ -43,6 +43,13 @@ namespace devblog.Controllers
       return Json(data);
     }     
 
+    [Route("blog/search")]
+    public IActionResult Search(string query)
+    {
+      var posts = _postsRepository.Find(query);
+      return View("Index", posts);
+    }
+
     public IActionResult Index(int id)
     {
       return View(_postsRepository.GetPage(id));

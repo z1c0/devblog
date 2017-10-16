@@ -1,4 +1,12 @@
-﻿.blogpost .published-date {
+﻿.form-control {
+  border-radius: 0px;
+}
+
+.search-btn {
+  padding: 0 12px;
+}
+
+.blogpost .published-date {
   display: block;
   text-align: center;
   font-style: italic;

@@ -1,7 +1,7 @@
 ﻿@model devblog.Models.PostsPage
 
 <div class="repo-list">
-  <h2>Blog Posts</h2>
+  <h2>@(Model.Description ?? "Blog Posts")</h2>
   <ul>
   @foreach (var p in @Model.Posts)
   {
